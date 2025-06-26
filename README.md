@@ -1,3 +1,36 @@
+<article>
+  <h2>Why Sports Matter in Our Lives</h2>
+  <p><em>Posted on June 26, 2025</em></p>
+  <img src="https://i.postimg.cc/DwKq9vRf/sports-team.jpg" alt="Team playing sports" style="width:100%; border-radius:12px; margin:10px 0;">
+  <p>Sports play a vital role in shaping our physical health, mental strength, and social skills. Whether you're a professional athlete or a casual weekend player, sports can teach us discipline, teamwork, and perseverance.</p>
+
+  <p>Here are a few reasons why sports matter:</p>
+  <ul>
+    <li><strong>Physical Fitness:</strong> Sports keep our bodies strong, agile, and healthy.</li>
+    <li><strong>Teamwork:</strong> Playing as a team builds unity, leadership, and communication.</li>
+    <li><strong>Discipline:</strong> Regular practice and training foster self-control and time management.</li>
+    <li><strong>Mental Health:</strong> Sports reduce stress and boost confidence and mood.</li>
+    <li><strong>Fun & Motivation:</strong> It’s a powerful way to have fun while setting goals and pushing limits.</li>
+  </ul>
+
+  <p>So whether it’s basketball, soccer, volleyball, or any other sport—get active and stay in the game!</p>
+</article>
+
+<article>
+  <h2>5 Simple Habits to Boost Your Productivity</h2>
+  <p><em>Posted on June 26, 2025</em></p>
+  <img src="https://via.placeholder.com/800x400.png?text=Productivity+Tips" alt="Productivity image" style="width:100%; border-radius: 12px; margin: 10px 0;">
+  <p>Staying productive doesn’t mean working non-stop. Here are 5 habits that can help you work smarter:</p>
+  <ul>
+    <li>Start your day with a to-do list</li>
+    <li>Take regular breaks (try Pomodoro!)</li>
+    <li>Eliminate distractions—phone off, focus on</li>
+    <li>Prioritize tasks with the Eisenhower Matrix</li>
+    <li>Reflect and plan tomorrow today</li>
+  </ul>
+  <p>Small habits = big results. Stay consistent!</p>
+</article>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
