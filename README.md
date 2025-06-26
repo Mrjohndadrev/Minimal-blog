@@ -1,4 +1,69 @@
 <article>
+  <h2>How to Become Rich: Habits That Build Wealth for Life</h2>
+  <p><em>Posted on June 26, 2025</em></p>
+  <img src="https://i.postimg.cc/MpXrMqwc/become-rich.jpg" alt="Path to wealth" style="width:100%; border-radius:12px; margin:10px 0;">
+
+  <p>Becoming rich is a dream for many — but it's not just about luck or being born into wealth. Most self-made millionaires and successful people followed certain principles, took consistent action, and made smart choices over time.</p>
+
+  <p>Here’s the truth: **wealth is not only about money, it's about mindset, discipline, and long-term vision.** Whether you're starting with little or aiming to grow what you already have, these steps will guide you on your journey to financial freedom.</p>
+
+  <h3>1. Build a Strong Mindset</h3>
+  <p>It all begins in the mind. If you believe that you’ll always be poor or unlucky, you’ll act that way. Rich people think differently — they see opportunity, not obstacles.</p>
+  <ul>
+    <li>Read books about success, money, and personal growth</li>
+    <li>Surround yourself with people who inspire and challenge you</li>
+    <li>Set clear financial goals and believe you can reach them</li>
+  </ul>
+
+  <h3>2. Live Below Your Means</h3>
+  <p>One of the biggest traps that prevent people from getting rich is spending more than they earn. No matter how much you make, if you spend it all — you’ll stay broke.</p>
+  <ul>
+    <li>Track your expenses and create a monthly budget</li>
+    <li>Avoid debt for things you don’t truly need</li>
+    <li>Save a portion of every income you earn — no matter how small</li>
+  </ul>
+
+  <h3>3. Increase Your Income</h3>
+  <p>Saving is important — but to become truly wealthy, you also need to **earn more** over time.</p>
+  <ul>
+    <li>Learn new skills that increase your value (like tech, business, communication)</li>
+    <li>Start a side hustle or online business</li>
+    <li>Look for ways to grow in your current job or switch to higher-paying careers</li>
+  </ul>
+
+  <h3>4. Invest Early and Wisely</h3>
+  <p>Don’t let your money sit in a bank forever. Learn how to invest. Even small amounts can grow into big wealth with time and consistency.</p>
+  <ul>
+    <li>Start with savings, then learn about stocks, mutual funds, or real estate</li>
+    <li>Study before you invest — never just follow hype</li>
+    <li>Use compound interest to grow your money over years</li>
+  </ul>
+
+  <h3>5. Be Patient and Consistent</h3>
+  <p>Wealth doesn’t come overnight. It takes years of effort, smart choices, and discipline. But the reward is worth it — freedom, peace of mind, and the ability to help others.</p>
+
+  <blockquote>"Getting rich is not a result of luck; it’s a result of learning, discipline, and action." – Unknown</blockquote>
+
+  <h3>6. Give Back and Stay Humble</h3>
+  <p>True wealth isn’t just about having more — it’s about being able to give more. Help your family, support causes you care about, and never forget where you came from.</p>
+
+  <p>In the end, becoming rich isn’t just about money. It’s about building a better life — one that’s full of purpose, freedom, and happiness. Start now, take small steps, and stay focused. Your future is in your hands.</p>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article>
   <h2>Basketball: More Than Just a Game</h2>
   <p><em>Posted on June 26, 2025</em></p>
   <img src="https://i.postimg.cc/x8T9qbPr/basketball-action.jpg" alt="Basketball game in action" style="width:100%; border-radius:12px; margin:10px 0;">
@@ -22,6 +87,16 @@
 
   <p>So grab a ball, hit the court, and experience the joy of the game. 🏀</p>
 </article>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -49,6 +124,14 @@
 
   <p>Whether you're a player, fan, or coach — football belongs to you. Play with heart. ⚽</p>
 </article>
+
+
+
+
+
+
+
+
 
 
 
