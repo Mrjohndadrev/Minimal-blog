@@ -416,6 +416,71 @@
     </ul>
   </nav>
 
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy</title>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p><strong>Effective Date:</strong> June 26, 2025</p>
+  <p>Welcome to <strong>Minimal Blog</strong>. Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information.</p>
+
+  <h2>1. Information We Collect</h2>
+  <p>We may collect your name or email if you contact us or subscribe. We also collect non-personal info like your browser, device, and IP address.</p>
+
+  <h2>2. How We Use Your Information</h2>
+  <ul>
+    <li>To improve our content and services</li>
+    <li>To respond to messages</li>
+    <li>To send updates if you subscribe</li>
+  </ul>
+
+  <h2>3. Cookies</h2>
+  <p>We may use cookies to improve performance. You can disable them in your browser settings.</p>
+
+  <h2>4. Third-Party Services</h2>
+  <p>We may use services like Google Analytics and AdSense, which have their own privacy policies.</p>
+
+  <h2>5. Your Rights</h2>
+  <p>You may request access to or deletion of your personal data by contacting us.</p>
+
+  <h2>6. Security</h2>
+  <p>We take steps to protect your data, but online transmission is never 100% secure.</p>
+
+  <h2>7. Changes</h2>
+  <p>This policy may be updated. Check this page for the latest version.</p>
+
+  <h2>8. Contact</h2>
+  <p>If you have questions, email: <strong>johndadrev@gmail.com</strong></p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me</title>
+</head>
+<body>
+  <h1>About Me</h1>
+  <p>Hello! I'm <strong>John Dadrev Golipatan</strong>, a passionate content creator and blogger based in the Philippines.</p>
+
+  <p>I created this blog to share my thoughts, experiences, and useful tips on topics like daily life, sports, health, success, and more. My goal is to inspire and help people by writing content that is both meaningful and relatable.</p>
+
+  <p>Outside of blogging, I enjoy watching basketball, following boxing (especially Manny Pacquiao), and learning how to grow online. I'm currently working on making this blog better every day and turning it into something I can be proud of.</p>
+
+  <p>Thank you for visiting! I hope you enjoy the content and feel free to connect with me anytime.</p>
+
+  <p><strong>Email:</strong> mrjohndadrev@gmail.com</p>
+</body>
+</html>
+
+
+
   <section id="about" class="section">
     <h2>About Me</h2>
     <p>Hello! I’m <strong>Mr John</strong> — a passionate writer and aspiring developer. I created this minimalist blog to share my thoughts on tech, personal growth, and digital creativity.</p>
