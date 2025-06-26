@@ -145,7 +145,7 @@
     <h2>Contact Me</h2>
     <p>If you'd like to connect or collaborate, feel free to reach out.</p>
     <ul class="social">
-      <li><a href="rjohndadrevgolipatan@gmail.com"><i class="fa fa-envelope"></i> Email</a></li>
+      <li><a href="mrjohndadrevgolipatan@gmail.com"><i class="fa fa-envelope"></i> Email</a></li>
       <li><a href="https://github.com/Mrjohndadrev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
       <li><a href="https://www.facebook.com/beverlynabay/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
     </ul>
