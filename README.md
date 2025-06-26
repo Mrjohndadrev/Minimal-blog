@@ -102,7 +102,7 @@
 
   <section id="about" class="section">
     <h2>About Me</h2>
-    <p>Hello! I’m <strong>John Dadrev</strong> — a passionate writer and aspiring developer. I created this minimalist blog to share my thoughts on tech, personal growth, and digital creativity.</p>
+    <p>Hello! I’m <strong>Mr John</strong> — a passionate writer and aspiring developer. I created this minimalist blog to share my thoughts on tech, personal growth, and digital creativity.</p>
     <p>I love learning new things, building small projects, and inspiring others through storytelling.</p>
   </section>
 
@@ -145,14 +145,14 @@
     <h2>Contact Me</h2>
     <p>If you'd like to connect or collaborate, feel free to reach out.</p>
     <ul class="social">
-      <li><a href="mailto:your@email.com"><i class="fa fa-envelope"></i> Email</a></li>
+      <li><a href="rjohndadrevgolipatan@gmail.com"><i class="fa fa-envelope"></i> Email</a></li>
       <li><a href="https://github.com/Mrjohndadrev" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-      <li><a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+      <li><a href="https://https://www.facebook.com/share/16cWRGmBF3/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
     </ul>
   </section>
 
   <footer>
-    <p>&copy; 2025 John Dadrev. All rights reserved.</p>
+    <p>&copy; 2025 MrJohn. All rights reserved.</p>
   </footer>
 
 </body>
