@@ -1,7 +1,8 @@
 <article>
   <h2>Why Sports Matter in Our Lives</h2>
   <p><em>Posted on June 26, 2025</em></p>
-  <img src="https://i.postimg.cc/DwKq9vRf/sports-team.jpg" alt="Team playing sports" style="width:100%; border-radius:12px; margin:10px 0;">
+  <img
+    
   <p>Sports play a vital role in shaping our physical health, mental strength, and social skills. Whether you're a professional athlete or a casual weekend player, sports can teach us discipline, teamwork, and perseverance.</p>
 
   <p>Here are a few reasons why sports matter:</p>
