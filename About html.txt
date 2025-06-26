@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Me</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>About Me</h1>
+  <p>Hello! I'm John Dadrev, the creator of this blog. I created this space to share thoughts, tutorials, tech tips, and creative ideas. My goal is to inspire others through helpful content and personal experiences.</p>
+  <p>Thank you for visiting, and I hope you find something valuable here!</p>
+</body>
+</html>
