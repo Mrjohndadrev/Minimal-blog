@@ -1,4 +1,18 @@
 index.html
-<a href="/about.html">About</a>
-<a href="/contact.html">Contact</a>
-<a href="/privacy.html">Privacy Policy</a>
+<a href="about.html">About Page</a>
+
+<video controls src="video.mp4"></video>
+<audio controls src="audio.mp3"></audio><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Site</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Welcome to my site</h1>
+  <img src="images/photo.jpg" alt="Example">
+  <a href="about.html">Go to About</a>
+  <script src="script.js"></script>
+</body>
+</html>
