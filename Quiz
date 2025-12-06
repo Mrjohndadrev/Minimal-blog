@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Quiz</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      width: 100%;
+      height: 100%;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    .quiz-container {
+      width: 100%;
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .quiz-content {
+      background: white;
+      border-radius: 24px;
+      padding: 3rem;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .start-screen, .question-screen, .results-screen {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      margin: 0 0 2.5rem 0;
+      opacity: 0.7;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .question-number {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      opacity: 0.6;
+    }
+
+    .question-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 2rem 0;
+      line-height: 1.4;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .option-button {
+      padding: 1.25rem 1.5rem;
+      font-size: 1.1rem;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .option-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .option-button.correct {
+      border-color: #10b981;
+      pointer-events: none;
+    }
+
+    .option-button.incorrect {
+      border-color: #ef4444;
+      pointer-events: none;
+    }
+
+    .option-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .start-button, .retry-button {
+      padding: 1rem 3rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      margin-top: 1rem;
+    }
+
+    .start-button:hover, .retry-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .score-display {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 2rem 0;
+    }
+
+    .score-message {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .emoji {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="quiz-container">
+   <div class="quiz-content">
+    <div class="start-screen" id="startScreen">
+     <div class="emoji">
+      🌍
+     </div>
+     <h1 id="quizTitle"></h1>
+     <p class="subtitle" id="quizSubtitle"></p><button class="start-button" id="startButton"></button>
+    </div>
+    <div class="question-screen hidden" id="questionScreen">
+     <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+     </div>
+     <div class="question-number" id="questionNumber"></div>
+     <h2 class="question-text" id="questionText"></h2>
+     <div class="options" id="optionsContainer"></div>
+    </div>
+    <div class="results-screen hidden" id="resultsScreen">
+     <div class="emoji" id="resultsEmoji"></div>
+     <h1 id="resultsTitle"></h1>
+     <div class="score-display" id="scoreDisplay"></div>
+     <p class="score-message" id="scoreMessage"></p><button class="retry-button" id="retryButton"></button>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      quiz_title: "World Quiz Challenge",
+      quiz_subtitle: "Test your knowledge about our amazing planet!",
+      start_button: "Start Quiz",
+      results_title: "Quiz Complete!",
+      retry_button: "Try Again",
+      background_color: "#667eea",
+      surface_color: "#ffffff",
+      text_color: "#1f2937",
+      primary_action_color: "#7c3aed",
+      secondary_action_color: "#e0e7ff",
+      font_family: "Inter",
+      font_size: 16
+    };
+
+    const questions = [
+      {
+        question: "What is the largest ocean on Earth?",
+        options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+        correct: 2
+      },
+      {
+        question: "Which country has the most time zones?",
+        options: ["Russia", "USA", "France", "China"],
+        correct: 2
+      },
+      {
+        question: "What is the capital of Australia?",
+        options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+        correct: 2
+      },
+      {
+        question: "Which desert is the largest in the world?",
+        options: ["Sahara Desert", "Arabian Desert", "Gobi Desert", "Antarctic Desert"],
+        correct: 3
+      },
+      {
+        question: "What is the longest river in the world?",
+        options: ["Amazon River", "Nile River", "Yangtze River", "Mississippi River"],
+        correct: 1
+      },
+      {
+        question: "Which mountain range is the longest?",
+        options: ["Himalayas", "Rocky Mountains", "Andes", "Alps"],
+        correct: 2
+      },
+      {
+        question: "What is the most populated country in the world?",
+        options: ["China", "India", "USA", "Indonesia"],
+        correct: 1
+      },
+      {
+        question: "Which country has the most natural lakes?",
+        options: ["USA", "Russia", "Canada", "Brazil"],
+        correct: 2
+      },
+      {
+        question: "What is the smallest country in the world?",
+        options: ["Monaco", "Vatican City", "San Marino", "Liechtenstein"],
+        correct: 1
+      },
+      {
+        question: "Which continent has the most countries?",
+        options: ["Asia", "Europe", "Africa", "South America"],
+        correct: 2
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function updateUI(config) {
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+      
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.body.style.fontSize = `${baseSize}px`;
+      
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      
+      document.querySelector('.quiz-container').style.background = `linear-gradient(135deg, ${bgColor} 0%, ${adjustBrightness(bgColor, -20)} 100%)`;
+      document.querySelector('.quiz-content').style.backgroundColor = surfaceColor;
+      document.querySelector('.quiz-content').style.color = textColor;
+      
+      const title = document.getElementById('quizTitle');
+      title.textContent = config.quiz_title || defaultConfig.quiz_title;
+      title.style.fontSize = `${baseSize * 2.5}px`;
+      title.style.color = textColor;
+      
+      const subtitle = document.getElementById('quizSubtitle');
+      subtitle.textContent = config.quiz_subtitle || defaultConfig.quiz_subtitle;
+      subtitle.style.fontSize = `${baseSize * 1.25}px`;
+      subtitle.style.color = textColor;
+      
+      const startButton = document.getElementById('startButton');
+      startButton.textContent = config.start_button || defaultConfig.start_button;
+      startButton.style.backgroundColor = primaryColor;
+      startButton.style.color = '#ffffff';
+      startButton.style.fontSize = `${baseSize * 1.2}px`;
+      
+      const retryButton = document.getElementById('retryButton');
+      retryButton.textContent = config.retry_button || defaultConfig.retry_button;
+      retryButton.style.backgroundColor = primaryColor;
+      retryButton.style.color = '#ffffff';
+      retryButton.style.fontSize = `${baseSize * 1.2}px`;
+      
+      const resultsTitle = document.getElementById('resultsTitle');
+      resultsTitle.textContent = config.results_title || defaultConfig.results_title;
+      resultsTitle.style.fontSize = `${baseSize * 2.5}px`;
+      resultsTitle.style.color = textColor;
+      
+      document.querySelector('.progress-bar').style.backgroundColor = secondaryColor;
+      document.getElementById('progressFill').style.backgroundColor = primaryColor;
+      
+      const questionText = document.getElementById('questionText');
+      questionText.style.fontSize = `${baseSize * 1.5}px`;
+      questionText.style.color = textColor;
+      
+      const questionNumber = document.getElementById('questionNumber');
+      questionNumber.style.fontSize = `${baseSize * 0.9}px`;
+      questionNumber.style.color = textColor;
+      
+      document.querySelectorAll('.option-button').forEach(btn => {
+        btn.style.backgroundColor = secondaryColor;
+        btn.style.color = textColor;
+        btn.style.fontSize = `${baseSize * 1.1}px`;
+      });
+      
+      const scoreDisplay = document.getElementById('scoreDisplay');
+      scoreDisplay.style.fontSize = `${baseSize * 4}px`;
+      scoreDisplay.style.color = primaryColor;
+      
+      const scoreMessage = document.getElementById('scoreMessage');
+      scoreMessage.style.fontSize = `${baseSize * 1.3}px`;
+      scoreMessage.style.color = textColor;
+    }
+
+    function adjustBrightness(color, percent) {
+      const num = parseInt(color.replace("#",""), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = (num >> 16) + amt;
+      const G = (num >> 8 & 0x00FF) + amt;
+      const B = (num & 0x0000FF) + amt;
+      return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 +
+        (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255))
+        .toString(16).slice(1);
+    }
+
+    async function onConfigChange(config) {
+      updateUI(config);
+    }
+
+    function startQuiz() {
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('questionScreen').classList.remove('hidden');
+      currentQuestion = 0;
+      score = 0;
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const question = questions[currentQuestion];
+      document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+      document.getElementById('questionText').textContent = question.question;
+      
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      document.getElementById('progressFill').style.width = `${progress}%`;
+      
+      const optionsContainer = document.getElementById('optionsContainer');
+      optionsContainer.innerHTML = '';
+      
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      
+      question.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.className = 'option-button';
+        button.textContent = option;
+        button.style.backgroundColor = secondaryColor;
+        button.style.color = textColor;
+        button.style.fontSize = `${baseSize * 1.1}px`;
+        button.onclick = () => selectAnswer(index);
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    function selectAnswer(selectedIndex) {
+      const question = questions[currentQuestion];
+      const buttons = document.querySelectorAll('.option-button');
+      
+      buttons.forEach((button, index) => {
+        button.disabled = true;
+        if (index === question.correct) {
+          button.classList.add('correct');
+          button.style.backgroundColor = '#d1fae5';
+          button.style.color = '#065f46';
+        } else if (index === selectedIndex) {
+          button.classList.add('incorrect');
+          button.style.backgroundColor = '#fee2e2';
+          button.style.color = '#991b1b';
+        }
+      });
+      
+      if (selectedIndex === question.correct) {
+        score++;
+      }
+      
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          showQuestion();
+        } else {
+          showResults();
+        }
+      }, 1500);
+    }
+
+    function showResults() {
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('resultsScreen').classList.remove('hidden');
+      
+      document.getElementById('scoreDisplay').textContent = `${score}/${questions.length}`;
+      
+      let emoji = '🎉';
+      let message = '';
+      
+      const percentage = (score / questions.length) * 100;
+      
+      if (percentage === 100) {
+        emoji = '🏆';
+        message = "Perfect score! You're a world geography expert!";
+      } else if (percentage >= 80) {
+        emoji = '🌟';
+        message = "Excellent work! You really know your world facts!";
+      } else if (percentage >= 60) {
+        emoji = '👏';
+        message = "Good job! You have solid knowledge about the world!";
+      } else if (percentage >= 40) {
+        emoji = '📚';
+        message = "Not bad! Keep learning about our amazing planet!";
+      } else {
+        emoji = '🌍';
+        message = "Keep exploring! There's so much to learn about the world!";
+      }
+      
+      document.getElementById('resultsEmoji').textContent = emoji;
+      document.getElementById('scoreMessage').textContent = message;
+    }
+
+    function retryQuiz() {
+      document.getElementById('resultsScreen').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+    }
+
+    document.getElementById('startButton').addEventListener('click', startQuiz);
+    document.getElementById('retryButton').addEventListener('click', retryQuiz);
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["quiz_title", config.quiz_title || defaultConfig.quiz_title],
+          ["quiz_subtitle", config.quiz_subtitle || defaultConfig.quiz_subtitle],
+          ["start_button", config.start_button || defaultConfig.start_button],
+          ["results_title", config.results_title || defaultConfig.results_title],
+          ["retry_button", config.retry_button || defaultConfig.retry_button]
+        ])
+      });
+    } else {
+      updateUI(defaultConfig);
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a9ab40a70f8bc43',t:'MTc2NTAxMjc4NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
